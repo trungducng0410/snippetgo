@@ -89,7 +89,7 @@ func (app *application) signupUser(w http.ResponseWriter, r *http.Request) {
 	form := forms.New(r.PostForm)
 	form.Required("name", "email", "password")
 	form.MatchesPattern("email", forms.EmailRegex)
-	form.MinLength("password", 8)
+	form.MinLength("password", 10)
 
 	if !form.Valid() {
 		app.render(w, r, "signup.page.tmpl", &templateData{Form: form})
